@@ -7,15 +7,31 @@ import { Link } from "../routes";
 class REServiceIndex extends Component {
   static async getInitialProps() {
     const reServices = await factory.methods.deployedREServices().call();
-    return { reServices: reServices };
+    console.log("****************");
+    console.log(reServices);
+    let obj = [];
+    for (let i = 0; i < reServices.length; i++) {
+      obj.push({ address: reServices[i], name: "Contract " + i });
+    }
+    console.log(obj);
+    return { reServices: obj };
   }
   renderREServices() {
-    const items = this.props.reServices.map(address => {
+    const items = this.props.reServices.map(contract => {
       return {
-        header: address,
+        header: contract.name,
+        meta: "Address: " + contract.address,
         description: (
-          <Link route={`/reService/${address}/listings/listingsSummary`}>
-            <a>View Listings Summary</a>
+          <Link
+            route={`/reService/${contract.address}/listings/listingsSummary`}
+          >
+            <Button
+              color="teal"
+              floated="right"
+              content="View"
+              icon="right arrow"
+              labelPosition="right"
+            />
           </Link>
         ),
         fluid: true
@@ -26,18 +42,36 @@ class REServiceIndex extends Component {
   render() {
     return (
       <Layout>
-        <div>
-          <h3> Open Listings </h3>
-          <Link route="/reService/new">
-            <a>
-              <Button
-                floated="right"
-                content="Create REService"
-                icon="add circle"
-                primary
-              />
-            </a>
+        <div className="ui breadcrumb" style={{ margin: "0px 0px 20px 0px" }}>
+          <Link route={`/`}>
+            <a className="section">MLS</a>
           </Link>
+
+          <div className="divider"> / </div>
+          <Link route={`/`}>
+            <a className="active section">Contracts</a>
+          </Link>
+        </div>
+
+        <div>
+          <div className="ui grid">
+            <div className="ten wide column">
+              <h1 className="ui header">Contracts</h1>
+            </div>
+            <div className="six wide column">
+              <Link route="/reService/new">
+                <a>
+                  <Button
+                    color="teal"
+                    floated="right"
+                    content="New Contract"
+                    icon="add circle"
+                  />
+                </a>
+              </Link>
+            </div>
+          </div>
+
           {this.renderREServices()}
         </div>
       </Layout>

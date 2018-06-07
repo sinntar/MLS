@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Table } from "semantic-ui-react";
+import { Button, Table, Card, Icon, Grid, Label } from "semantic-ui-react";
 import { Link } from "../../../routes";
 import Layout from "../../../components/Layout";
 import REService from "../../../ethereum/reService";
@@ -44,39 +44,87 @@ class ListingsSummary extends Component {
     });
   }
 
+  renderCards() {
+    return this.props.listings.map((listing, index) => {
+      const extra = (
+        <a>
+          <Icon name="video" />
+          <Link
+            route={`/reService/${this.props.address}/listings/media/${
+              listing.propertyId
+            }/listingImages`}
+          >
+            View Media
+          </Link>
+        </a>
+      );
+
+      const desc = (
+        <div>
+          <Grid>
+            <Grid.Column width={8}>
+              PropertyID: {listing.propertyId}
+            </Grid.Column>
+            <Grid.Column width={8}>Zip: {listing.zipCode}</Grid.Column>
+          </Grid>
+          <Grid>
+            <Grid.Column width={8}>Size: {listing.size}</Grid.Column>
+            <Grid.Column width={8}>Price: {listing.price}</Grid.Column>
+          </Grid>
+        </div>
+      );
+
+      return (
+        <Card
+          image="https://gateway.ipfs.io/ipfs/QmWDQpBNjrobkHhyCjgDFJXXVMc3NQjFcLkG1hTDKB3ZPq"
+          header={listing.propertyType}
+          meta={listing.saleType}
+          description={desc}
+          extra={extra}
+        />
+      );
+    });
+  }
+
   render() {
     const { Header, Row, HeaderCell, Body } = Table;
     return (
       <Layout>
-        <h3> Listings </h3>
-        <div>
-          <Table>
-            <Header>
-              <Row>
-                <HeaderCell> Property ID </HeaderCell>
-                <HeaderCell> Property Type </HeaderCell>
-                <HeaderCell> Sale Type </HeaderCell>
-                <HeaderCell> Zip Code </HeaderCell>
-                <HeaderCell> Size </HeaderCell>
-                <HeaderCell> Price </HeaderCell>
-                <HeaderCell> Media </HeaderCell>
-              </Row>
-            </Header>
-            <Body>{this.renderRows()}</Body>
-          </Table>
-          <Link route={`/reService/${this.props.address}/listings/listingNew`}>
-            <a>
-              <Button
-                floated="right"
-                content="Create Listing"
-                icon="add circle"
-                primary
-              />
-            </a>
+        <div className="ui breadcrumb">
+          <Link route={`/`}>
+            <a className="section">MLS</a>
           </Link>
+          <div className="divider"> / </div>
+          <Link route={`/`}>
+            <a className="section">Contracts</a>
+          </Link>
+          <div className="divider"> / </div>
+          <a className="active section">Listings</a>
         </div>
-        <div>Found {this.props.listingsCount} Listings. </div>
-        <div>The Contract Address is {this.props.address} </div>
+        <div style={{ margin: "0px 0px 20px 0px" }} />
+        <div className="ui grid">
+          <div className="ten wide column">
+            <h1 className="ui header">
+              Listings <Label>{this.props.listingsCount}</Label>
+            </h1>
+          </div>
+          <div className="six wide column">
+            <Link
+              route={`/reService/${this.props.address}/listings/listingNew`}
+            >
+              <a>
+                <Button
+                  floated="right"
+                  content="Create Listing"
+                  icon="add circle"
+                  color="teal"
+                />
+              </a>
+            </Link>
+          </div>
+        </div>
+        <div style={{ margin: "0px 0px 20px 0px" }} />
+        <Card.Group>{this.renderCards()}</Card.Group>
       </Layout>
     );
   }

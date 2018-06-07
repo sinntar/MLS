@@ -71,7 +71,26 @@ class ListingsNew extends Component {
   render() {
     return (
       <Layout>
-        <h3> Create a Listing </h3>
+        <div className="ui breadcrumb">
+          <Link route={`/`}>
+            <a className="section">MLS</a>
+          </Link>
+          <div className="divider"> / </div>
+          <Link route={`/`}>
+            <a className="section">Contracts</a>
+          </Link>
+          <div className="divider"> / </div>
+          <Link
+            route={`/reService/${this.props.address}/listings/listingsSummary`}
+          >
+            <a className="section">Listings</a>
+          </Link>
+          <div className="divider"> / </div>
+          <a className="active section">New</a>
+        </div>
+        <div style={{ margin: "0px 0px 20px 0px" }} />
+        <h1 className="ui header">Create New Listings</h1>
+        <div style={{ margin: "0px 0px 20px 0px" }} />
         <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
           <Form.Field>
             <label> Property ID </label>
@@ -129,7 +148,7 @@ class ListingsNew extends Component {
           </Form.Field>
 
           <Message error header="Oops!" content={this.state.errorMessage} />
-          <Button loading={this.state.loading} primary floated="right">
+          <Button loading={this.state.loading} floated="right" color="teal">
             Save
           </Button>
         </Form>

@@ -30,7 +30,18 @@ class REServiceNew extends Component {
   render() {
     return (
       <Layout>
-        <h3> Create a Service </h3>
+        <div className="ui breadcrumb" style={{ margin: "0px 0px 20px 0px" }}>
+          <a className="section">MLS</a>
+          <div className="divider"> / </div>
+          <Link route={`/`}>
+            <a className="section">Contracts</a>
+          </Link>
+          <div className="divider"> / </div>
+          <a className="active section">New</a>
+        </div>
+
+        <h1 className="ui header">Create New Contract</h1>
+
         <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
           <Form.Field>
             <label> Minimum Contribution </label>
@@ -46,8 +57,8 @@ class REServiceNew extends Component {
           </Form.Field>
 
           <Message error header="Oops!" content={this.state.errorMessage} />
-          <Button loading={this.state.loading} primary>
-            Create Service
+          <Button loading={this.state.loading} color="teal" floated="right">
+            Submit
           </Button>
         </Form>
       </Layout>

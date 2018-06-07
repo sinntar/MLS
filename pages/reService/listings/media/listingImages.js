@@ -6,9 +6,11 @@ import {
   Message,
   Input,
   Image,
-  Loader
+  Loader,
+  Label,
+  Card
 } from "semantic-ui-react";
-import { Router } from "../../../../routes";
+import { Link, Router } from "../../../../routes";
 import Layout from "../../../../components/Layout";
 import REService from "../../../../ethereum/reService";
 import ipfs from "../../../../ethereum/ipfs";
@@ -188,30 +190,73 @@ class ListingImageSummary extends Component {
       );
     });
   }
+
+  renderMediaCards() {
+    return this.props.list.map(list => {
+      const mediaURL = `https://gateway.ipfs.io/ipfs/${list.mediaURL}`;
+      return <Card image={mediaURL} />;
+    });
+  }
+
   render() {
     return (
       <Layout>
-        <h3> Listing Image Summary </h3>
+        <div className="ui breadcrumb">
+          <Link route={`/`}>
+            <a className="section">MLS</a>
+          </Link>
+          <div className="divider"> / </div>
+          <Link route={`/`}>
+            <a className="section">Contracts</a>
+          </Link>
+          <div className="divider"> / </div>
+          <Link
+            route={`/reService/${this.props.address}/listings/listingsSummary`}
+          >
+            <a className="section">Listings</a>
+          </Link>
+          <div className="divider"> / </div>
+          <a className="active section">Media</a>
+        </div>
+
+        <div style={{ margin: "0px 0px 20px 0px" }} />
 
         <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
-          <div floated="right" loading={this.state.loading}>
-            <label for="file" class="ui icon button" style={{ float: "right" }}>
-              <i class="upload icon" />
-              &nbsp;&nbsp;Upload Media
-            </label>
-            <input
-              type="file"
-              id="file"
-              onChange={this.captureFile}
-              style={{ display: "none" }}
-            />
-            {this.state.loading ? (
-              <div class="ui active centered inline loader" />
-            ) : (
-              <div class="none" />
-            )}
+          <div className="ui grid">
+            <div className="ten wide column">
+              <h1 className="ui header">Media Gallery</h1>
+            </div>
+
+            <div className="six wide column">
+              <div floated="right" loading={this.state.loading}>
+                <label
+                  for="file"
+                  color="teal"
+                  class="ui icon button"
+                  style={{ float: "right" }}
+                >
+                  <i class="upload icon" />
+                  &nbsp;&nbsp;Upload Media
+                </label>
+                <input
+                  type="file"
+                  id="file"
+                  onChange={this.captureFile}
+                  style={{ display: "none" }}
+                />
+                {this.state.loading ? (
+                  <div class="ui active centered inline loader" />
+                ) : (
+                  <div class="none" />
+                )}
+              </div>
+            </div>
           </div>
-          <div class="ui medium images">{this.renderMedia()}</div>
+
+          <div style={{ margin: "0px 0px 20px 0px" }} />
+
+          <Card.Group>{this.renderMediaCards()}</Card.Group>
+
           <Message error header="Oops!" content={this.state.errorMessage} />
         </Form>
       </Layout>

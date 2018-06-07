@@ -4,18 +4,17 @@ import { Link } from "../routes";
 
 export default () => {
   return (
-    <Menu style={{ marginTop: "10px" }}>
-      <Link route="/">
-        <a className="item">BlockChain Listings</a>
-      </Link>
-      <Menu.Menu position="right">
-        <Link route="/">
-          <a className="item">Contracts</a>
+    <div>
+      <Menu pointing secondary style={{ margin: "0px 0px 20px 0px" }}>
+        <Menu.Item name="MLS - BlockChain" />
+        <Link route={`/`}>
+          <Menu.Item active name="contracts" route="/" />
         </Link>
-        <Link route="/reService/new">
-          <a className="item">+</a>
-        </Link>
-      </Menu.Menu>
-    </Menu>
+        <Menu.Menu position="right">
+          <Menu.Item name="profile" />
+          <Menu.Item name="logout" />
+        </Menu.Menu>
+      </Menu>
+    </div>
   );
 };
