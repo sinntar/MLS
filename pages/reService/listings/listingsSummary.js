@@ -4,6 +4,7 @@ import { Link } from "../../../routes";
 import Layout from "../../../components/Layout";
 import REService from "../../../ethereum/reService";
 import ListingRow from "../../../components/ListingRow";
+import BreadcrumbMLSDivider  from "../../../components/Breadcrumb"
 
 class ListingsSummary extends Component {
   static async getInitialProps(props) {
@@ -49,12 +50,8 @@ class ListingsSummary extends Component {
       const extra = (
         <a>
           <Icon name="video" />
-          <Link
-            route={`/reService/${this.props.address}/listings/media/${
-              listing.propertyId
-            }/listingImages`}
-          >
-            View Media
+          <Link route={`/reService/${this.props.address}/listings/media/${listing.propertyId}/listingImages`}>
+            <a>View Media</a>
           </Link>
         </a>
       );
@@ -81,6 +78,7 @@ class ListingsSummary extends Component {
           meta={listing.saleType}
           description={desc}
           extra={extra}
+          key= {index}
         />
       );
     });
@@ -90,17 +88,7 @@ class ListingsSummary extends Component {
     const { Header, Row, HeaderCell, Body } = Table;
     return (
       <Layout>
-        <div className="ui breadcrumb">
-          <Link route={`/`}>
-            <a className="section">MLS</a>
-          </Link>
-          <div className="divider"> / </div>
-          <Link route={`/`}>
-            <a className="section">Contracts</a>
-          </Link>
-          <div className="divider"> / </div>
-          <a className="active section">Listings</a>
-        </div>
+        <BreadcrumbMLSDivider />
         <div style={{ margin: "0px 0px 20px 0px" }} />
         <div className="ui grid">
           <div className="ten wide column">
@@ -109,9 +97,7 @@ class ListingsSummary extends Component {
             </h1>
           </div>
           <div className="six wide column">
-            <Link
-              route={`/reService/${this.props.address}/listings/listingNew`}
-            >
+            <Link route={`/reService/${this.props.address}/listings/listingNew`}>
               <a>
                 <Button
                   floated="right"

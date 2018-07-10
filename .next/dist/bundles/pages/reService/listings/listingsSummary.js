@@ -72,6 +72,81 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "./components/Breadcrumb.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__ = __webpack_require__("semantic-ui-react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_semantic_ui_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__);
+var _jsxFileName = '/Users/sinntar/blockchain/MLS_Local/MLS/components/Breadcrumb.js';
+
+
+
+var BreadcrumbMLSDivider = function BreadcrumbMLSDivider() {
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    __WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__["Breadcrumb"],
+    {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 5
+      }
+    },
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      __WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__["Breadcrumb"].Section,
+      { href: '/', __source: {
+          fileName: _jsxFileName,
+          lineNumber: 6
+        }
+      },
+      'MLS'
+    ),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      __WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__["Breadcrumb"].Divider,
+      {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 7
+        }
+      },
+      '/'
+    ),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      __WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__["Breadcrumb"].Section,
+      { href: '/', __source: {
+          fileName: _jsxFileName,
+          lineNumber: 8
+        }
+      },
+      'Contracts'
+    ),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      __WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__["Breadcrumb"].Divider,
+      {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 9
+        }
+      },
+      '/'
+    ),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      __WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__["Breadcrumb"].Section,
+      { active: true, __source: {
+          fileName: _jsxFileName,
+          lineNumber: 10
+        }
+      },
+      'Listings'
+    )
+  );
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (BreadcrumbMLSDivider);
+
+/***/ }),
+
 /***/ "./components/Header.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -115,27 +190,36 @@ var _jsxFileName = "/Users/sinntar/blockchain/MLS_Local/MLS/components/Header.js
             lineNumber: 10
           }
         },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__["Menu"].Item, { active: true, name: "contracts", route: "/", __source: {
-            fileName: _jsxFileName,
-            lineNumber: 11
-          }
-        })
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "a",
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 11
+            }
+          },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__["Menu"].Item, { active: true, name: "contracts", route: "/", __source: {
+              fileName: _jsxFileName,
+              lineNumber: 12
+            }
+          })
+        )
       ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__["Menu"].Menu,
         { position: "right", __source: {
             fileName: _jsxFileName,
-            lineNumber: 13
+            lineNumber: 15
           }
         },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__["Menu"].Item, { name: "profile", __source: {
             fileName: _jsxFileName,
-            lineNumber: 14
+            lineNumber: 16
           }
         }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__["Menu"].Item, { name: "logout", __source: {
             fileName: _jsxFileName,
-            lineNumber: 15
+            lineNumber: 17
           }
         })
       )
@@ -431,6 +515,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Layout__ = __webpack_require__("./components/Layout.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ethereum_reService__ = __webpack_require__("./ethereum/reService.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_ListingRow__ = __webpack_require__("./components/ListingRow.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_Breadcrumb__ = __webpack_require__("./components/Breadcrumb.js");
 
 var _jsxFileName = "/Users/sinntar/blockchain/MLS_Local/MLS/pages/reService/listings/listingsSummary.js";
 
@@ -443,6 +528,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -473,7 +559,7 @@ var ListingsSummary = function (_Component) {
           address: _this2.props.address,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 37
+            lineNumber: 38
           }
         });
       });
@@ -489,24 +575,31 @@ var ListingsSummary = function (_Component) {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 50
+              lineNumber: 51
             }
           },
           __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Icon"], { name: "video", __source: {
               fileName: _jsxFileName,
-              lineNumber: 51
+              lineNumber: 52
             }
           }),
           __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
             __WEBPACK_IMPORTED_MODULE_3__routes__["Link"],
-            {
-              route: "/reService/" + _this3.props.address + "/listings/media/" + listing.propertyId + "/listingImages",
-              __source: {
+            { route: "/reService/" + _this3.props.address + "/listings/media/" + listing.propertyId + "/listingImages", __source: {
                 fileName: _jsxFileName,
-                lineNumber: 52
+                lineNumber: 53
               }
             },
-            "View Media"
+            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+              "a",
+              {
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 54
+                }
+              },
+              "View Media"
+            )
           )
         );
 
@@ -515,7 +608,7 @@ var ListingsSummary = function (_Component) {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 63
+              lineNumber: 60
             }
           },
           __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
@@ -523,14 +616,14 @@ var ListingsSummary = function (_Component) {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 64
+                lineNumber: 61
               }
             },
             __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
               __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Grid"].Column,
               { width: 8, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 65
+                  lineNumber: 62
                 }
               },
               "PropertyID: ",
@@ -540,7 +633,7 @@ var ListingsSummary = function (_Component) {
               __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Grid"].Column,
               { width: 8, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 68
+                  lineNumber: 65
                 }
               },
               "Zip: ",
@@ -552,14 +645,14 @@ var ListingsSummary = function (_Component) {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 70
+                lineNumber: 67
               }
             },
             __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
               __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Grid"].Column,
               { width: 8, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 71
+                  lineNumber: 68
                 }
               },
               "Size: ",
@@ -569,7 +662,7 @@ var ListingsSummary = function (_Component) {
               __WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Grid"].Column,
               { width: 8, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 72
+                  lineNumber: 69
                 }
               },
               "Price: ",
@@ -584,9 +677,10 @@ var ListingsSummary = function (_Component) {
           meta: listing.saleType,
           description: desc,
           extra: extra,
+          key: index,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 78
+            lineNumber: 75
           }
         });
       });
@@ -604,102 +698,39 @@ var ListingsSummary = function (_Component) {
         {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 92
+            lineNumber: 90
           }
         },
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-          "div",
-          { className: "ui breadcrumb", __source: {
-              fileName: _jsxFileName,
-              lineNumber: 93
-            }
-          },
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_3__routes__["Link"],
-            { route: "/", __source: {
-                fileName: _jsxFileName,
-                lineNumber: 94
-              }
-            },
-            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-              "a",
-              { className: "section", __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 95
-                }
-              },
-              "MLS"
-            )
-          ),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-            "div",
-            { className: "divider", __source: {
-                fileName: _jsxFileName,
-                lineNumber: 97
-              }
-            },
-            " / "
-          ),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_3__routes__["Link"],
-            { route: "/", __source: {
-                fileName: _jsxFileName,
-                lineNumber: 98
-              }
-            },
-            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-              "a",
-              { className: "section", __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 99
-                }
-              },
-              "Contracts"
-            )
-          ),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-            "div",
-            { className: "divider", __source: {
-                fileName: _jsxFileName,
-                lineNumber: 101
-              }
-            },
-            " / "
-          ),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-            "a",
-            { className: "active section", __source: {
-                fileName: _jsxFileName,
-                lineNumber: 102
-              }
-            },
-            "Listings"
-          )
-        ),
+        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__components_Breadcrumb__["a" /* default */], {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 91
+          }
+        }),
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", { style: { margin: "0px 0px 20px 0px" }, __source: {
             fileName: _jsxFileName,
-            lineNumber: 104
+            lineNumber: 92
           }
         }),
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
           "div",
           { className: "ui grid", __source: {
               fileName: _jsxFileName,
-              lineNumber: 105
+              lineNumber: 93
             }
           },
           __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
             "div",
             { className: "ten wide column", __source: {
                 fileName: _jsxFileName,
-                lineNumber: 106
+                lineNumber: 94
               }
             },
             __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
               "h1",
               { className: "ui header", __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 107
+                  lineNumber: 95
                 }
               },
               "Listings ",
@@ -708,7 +739,7 @@ var ListingsSummary = function (_Component) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 108
+                    lineNumber: 96
                   }
                 },
                 this.props.listingsCount
@@ -719,16 +750,14 @@ var ListingsSummary = function (_Component) {
             "div",
             { className: "six wide column", __source: {
                 fileName: _jsxFileName,
-                lineNumber: 111
+                lineNumber: 99
               }
             },
             __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
               __WEBPACK_IMPORTED_MODULE_3__routes__["Link"],
-              {
-                route: "/reService/" + this.props.address + "/listings/listingNew",
-                __source: {
+              { route: "/reService/" + this.props.address + "/listings/listingNew", __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 112
+                  lineNumber: 100
                 }
               },
               __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
@@ -736,7 +765,7 @@ var ListingsSummary = function (_Component) {
                 {
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 115
+                    lineNumber: 101
                   }
                 },
                 __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_semantic_ui_react__["Button"], {
@@ -746,7 +775,7 @@ var ListingsSummary = function (_Component) {
                   color: "teal",
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 116
+                    lineNumber: 102
                   }
                 })
               )
@@ -755,7 +784,7 @@ var ListingsSummary = function (_Component) {
         ),
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", { style: { margin: "0px 0px 20px 0px" }, __source: {
             fileName: _jsxFileName,
-            lineNumber: 126
+            lineNumber: 112
           }
         }),
         __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
@@ -763,7 +792,7 @@ var ListingsSummary = function (_Component) {
           {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 127
+              lineNumber: 113
             }
           },
           this.renderCards()

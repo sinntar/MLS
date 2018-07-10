@@ -8,7 +8,9 @@ export default () => {
       <Menu pointing secondary style={{ margin: "0px 0px 20px 0px" }}>
         <Menu.Item name="MLS - BlockChain" />
         <Link route={`/`}>
-          <Menu.Item active name="contracts" route="/" />
+          <a>
+            <Menu.Item active name="contracts" route="/" />
+          </a>
         </Link>
         <Menu.Menu position="right">
           <Menu.Item name="profile" />

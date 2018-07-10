@@ -115,27 +115,36 @@ var _jsxFileName = "/Users/sinntar/blockchain/MLS_Local/MLS/components/Header.js
             lineNumber: 10
           }
         },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__["Menu"].Item, { active: true, name: "contracts", route: "/", __source: {
-            fileName: _jsxFileName,
-            lineNumber: 11
-          }
-        })
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "a",
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 11
+            }
+          },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__["Menu"].Item, { active: true, name: "contracts", route: "/", __source: {
+              fileName: _jsxFileName,
+              lineNumber: 12
+            }
+          })
+        )
       ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__["Menu"].Menu,
         { position: "right", __source: {
             fileName: _jsxFileName,
-            lineNumber: 13
+            lineNumber: 15
           }
         },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__["Menu"].Item, { name: "profile", __source: {
             fileName: _jsxFileName,
-            lineNumber: 14
+            lineNumber: 16
           }
         }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_semantic_ui_react__["Menu"].Item, { name: "logout", __source: {
             fileName: _jsxFileName,
-            lineNumber: 15
+            lineNumber: 17
           }
         })
       )
