@@ -184,7 +184,7 @@ class ListingImageSummary extends Component {
       return (
         <img
           key={list.propertyId}
-          class="ui image"
+          className="ui image"
           src={`https://gateway.ipfs.io/ipfs/${list.mediaURL}`}
         />
       );
@@ -192,9 +192,9 @@ class ListingImageSummary extends Component {
   }
 
   renderMediaCards() {
-    return this.props.list.map(list => {
+    return this.props.list.map((list, index) => {
       const mediaURL = `https://gateway.ipfs.io/ipfs/${list.mediaURL}`;
-      return <Card image={mediaURL} />;
+      return <Card image={mediaURL} key={index} />;
     });
   }
 
@@ -228,14 +228,14 @@ class ListingImageSummary extends Component {
             </div>
 
             <div className="six wide column">
-              <div floated="right" loading={this.state.loading}>
+              <div floated="right" loading={this.state.loading.toString()}>
                 <label
-                  for="file"
+                  htmlFor="file"
                   color="teal"
-                  class="ui icon button"
+                  className="ui icon button"
                   style={{ float: "right" }}
                 >
-                  <i class="upload icon" />
+                  <i className="upload icon" />
                   &nbsp;&nbsp;Upload Media
                 </label>
                 <input
@@ -245,9 +245,9 @@ class ListingImageSummary extends Component {
                   style={{ display: "none" }}
                 />
                 {this.state.loading ? (
-                  <div class="ui active centered inline loader" />
+                  <div className="ui active centered inline loader" />
                 ) : (
-                  <div class="none" />
+                  <div className="none" />
                 )}
               </div>
             </div>
