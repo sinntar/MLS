@@ -23,7 +23,9 @@ class ListingsNew extends Component {
     saleType: "",
     zipCode: "",
     size: "",
-    price: ""
+    price: "",
+    longitude:"",
+    latitude:""
   };
 
   static async getInitialProps(props) {
@@ -41,6 +43,8 @@ class ListingsNew extends Component {
     console.log(this.state.zipCode);
     console.log(this.state.size);
     console.log(this.state.price);
+    console.log(this.state.longitude);
+    console.log(this.state.latitude);
 
     this.setState({ loading: true, errorMessage: "" });
     try {
@@ -54,7 +58,10 @@ class ListingsNew extends Component {
           this.state.saleType,
           this.state.zipCode,
           this.state.size,
-          this.state.price
+          this.state.price,
+          this.state.longitude,
+          this.state.latitude
+
         )
         .send({
           from: accounts[0]
@@ -144,6 +151,22 @@ class ListingsNew extends Component {
               placeholder="95"
               value={this.state.price}
               onChange={event => this.setState({ price: event.target.value })}
+            />
+            <label> longitude </label>
+            <Input
+              label="longitude"
+              labelPosition="right"
+              placeholder=""
+              value={this.state.longitude}
+              onChange={event => this.setState({ longitude: event.target.value })}
+            />
+            <label> latitude </label>
+            <Input
+              label="latitude"
+              labelPosition="right"
+              placeholder=""
+              value={this.state.latitude}
+              onChange={event => this.setState({ latitude: event.target.value })}
             />
           </Form.Field>
 

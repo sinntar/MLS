@@ -3,8 +3,8 @@ const Web3 = require("web3");
 const compiledFactory = require("./build/REServiceFactory.json");
 
 const provider = new HDWalletProvider(
-  "mom remain clerk swing embark feel ozone polar build trap bean correct",
-  "https://rinkeby.infura.io/taV9nXgIje6v0qeYqcxr"
+  "nothing cattle marine motion place weird patient snow fresh faith sentence grid",
+  "https://rinkeby.infura.io/swTzD4WziAiSXNnUPH5r"
 );
 
 const web3 = new Web3(provider);

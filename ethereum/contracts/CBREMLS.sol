@@ -28,6 +28,8 @@ contract REService {
         string zipCode;
         uint size;
         uint price;
+        string longitude;
+        string latitude;
     }
 
     struct BrokerInfo {
@@ -92,7 +94,9 @@ contract REService {
                             string saleType,
                             string zipCode,
                             uint size,
-                            uint price) public {
+                            uint price,
+                            string longitude,
+                            string latitude) public {
 
         BasicPropertyInfo memory newBasicPropertyInfo = BasicPropertyInfo({
             propertyId: propertyId,
@@ -101,7 +105,9 @@ contract REService {
             saleType: saleType,
             zipCode: zipCode,
             size: size,
-            price: price
+            price: price,
+            longitude: longitude,
+            latitude: latitude
         });
         propertyListings.push(newBasicPropertyInfo);
     }
