@@ -9,8 +9,8 @@ const mlsPath = path.resolve(__dirname, "contracts", "CBREMLS.sol");
 console.log(mlsPath);
 const source = fs.readFileSync(mlsPath, "utf8");
 console.log(mlsPath);
-const output = solc.compile(source, 1).contracts;
 
+const output = solc.compile(source, 1).contracts;
 console.log("Compile Initiated");
 
 fs.ensureDirSync(buildPath);

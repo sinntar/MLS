@@ -3,10 +3,13 @@ import { Card, Button } from "semantic-ui-react";
 import factory from "../ethereum/factory";
 import Layout from "../components/Layout";
 import { Link } from "../routes";
+import web3 from "../ethereum/web3";
+import REServiceFactory from "../ethereum/build/REServiceFactory.json";
+
 
 class REServiceIndex extends Component {
   static async getInitialProps() {
-    const reServices = await factory.methods.deployedREServices().call();
+    const reServices = await factory.methods.GetDeployedREServices().call();
     console.log("****************");
     console.log(reServices);
     let obj = [];

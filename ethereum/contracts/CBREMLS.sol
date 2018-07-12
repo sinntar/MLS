@@ -1,20 +1,18 @@
-pragma solidity ^0.4.19;
+pragma solidity 0.4.23;
 
 
 contract REServiceFactory {
 
-    address[] public deployedREServices;
+  REService[] public deployedREServices;
 
-    function CreateREService(uint minContr) public {
-        address newREService = new REService(minContr, msg.sender);
-        deployedREServices.push(newREService);
-    }
+  function CreateREService(uint minContr) public {
+      REService newREService = new REService(minContr, msg.sender);
+      deployedREServices.push(newREService);
+  }
 
-    function deployedREServices() public view returns (address[]) {
-        return deployedREServices;
-    }
-
-
+  function GetDeployedREServices() public view returns (REService[]) {
+      return deployedREServices;
+  }
 }
 
 
@@ -28,8 +26,13 @@ contract REService {
         string zipCode;
         uint size;
         uint price;
-        string longitude;
-        string latitude;
+
+    }
+
+    struct PropertyLocationInfo{
+      string propertyId;
+      string longitude;
+      string latitude;
     }
 
     struct BrokerInfo {
@@ -48,6 +51,7 @@ contract REService {
     BasicPropertyInfo[] public propertyListings;
     BrokerInfo[] public brokersInfo;
     PropertyMedia[] public propertyMediaData;
+    PropertyLocationInfo[] public  propertyLocationData;
     uint public minContribution;
     address public broker;
     mapping(address => bool) public brokers;
@@ -59,7 +63,7 @@ contract REService {
         _;
     }
 
-    function REService(uint minContr, address creator) public {
+    constructor(uint minContr, address creator) public {
         broker = creator;
         brokers[msg.sender] = true;
         minContribution = minContr;
@@ -94,9 +98,7 @@ contract REService {
                             string saleType,
                             string zipCode,
                             uint size,
-                            uint price,
-                            string longitude,
-                            string latitude) public {
+                            uint price) public {
 
         BasicPropertyInfo memory newBasicPropertyInfo = BasicPropertyInfo({
             propertyId: propertyId,
@@ -105,11 +107,20 @@ contract REService {
             saleType: saleType,
             zipCode: zipCode,
             size: size,
-            price: price,
-            longitude: longitude,
-            latitude: latitude
+            price: price
         });
         propertyListings.push(newBasicPropertyInfo);
+    }
+
+    function setPropertyLocation(string propertyId,string longitude,
+    string latitude) public{
+      PropertyLocationInfo memory newPropertyLocation = PropertyLocationInfo({
+         propertyId:propertyId,
+         longitude:longitude,
+         latitude:latitude
+        });
+
+        propertyLocationData.push(newPropertyLocation);
     }
 
     function getBasicPropertyInfoCount() public view returns(uint) {
