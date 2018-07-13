@@ -58,14 +58,22 @@ class ListingsNew extends Component {
           this.state.saleType,
           this.state.zipCode,
           this.state.size,
-          this.state.price,
-          this.state.longitude,
-          this.state.latitude
+          this.state.price
 
         )
         .send({
           from: accounts[0]
         });
+
+        await reService.methods
+          .setPropertyLocation(
+            this.state.propertyId,
+            this.state.longitude,
+            this.state.latitude
+          )
+          .send({
+            from: accounts[0]
+          });
       Router.pushRoute(
         `/reService/${this.props.address}/listings/listingsSummary`
       );

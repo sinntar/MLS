@@ -5,8 +5,23 @@ import Layout from "../../../components/Layout";
 import REService from "../../../ethereum/reService";
 import ListingRow from "../../../components/ListingRow";
 import BreadcrumbMLSDivider  from "../../../components/Breadcrumb"
+import Map from './listingMap.js'
 
 class ListingsSummary extends Component {
+
+  constructor() {
+		super();
+		this.state = {
+			shown: false,
+		};
+	}
+
+	toggle() {
+		this.setState({
+			shown: !this.state.shown
+		});
+	}
+
   static async getInitialProps(props) {
     const { address } = props.query;
     console.log("Listings Summary" + address);
@@ -86,6 +101,13 @@ class ListingsSummary extends Component {
 
   render() {
     const { Header, Row, HeaderCell, Body } = Table;
+    var shown = {
+			display: this.state.shown ? "block" : "none"
+		};
+
+		var hidden = {
+			display: this.state.shown ? "none" : "block"
+		}
     return (
       <Layout>
         <BreadcrumbMLSDivider />
@@ -110,7 +132,14 @@ class ListingsSummary extends Component {
           </div>
         </div>
         <div style={{ margin: "0px 0px 20px 0px" }} />
-        <Card.Group>{this.renderCards()}</Card.Group>
+        <Button.Group size='large'>
+          <Button onClick={this.toggle.bind(this)}>List View</Button>
+          <Button.Or />
+          <Button onClick={this.toggle.bind(this)}>Map View</Button>
+        </Button.Group>
+        <div style={{ margin: "0px 0px 20px 0px" }} />
+        <div style={ hidden }><Card.Group>{this.renderCards()}</Card.Group></div>
+        <div style={ shown }><Map address={this.props.address}/></div>
       </Layout>
     );
   }
