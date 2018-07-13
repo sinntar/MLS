@@ -38,7 +38,7 @@ const MapWithAMarkerClusterer = compose(
     >
       {props.markers.map((marker, index) => (
         <Marker
-          key={index}
+          key={marker.propertyId}
           position={{ lat: marker.latitude, lng: marker.longitude }}
         />
       ))}
@@ -63,40 +63,23 @@ class Map extends React.PureComponent {
 
     console.log(reService);
 
+    var result = [];
+
     const listingsCount = await reService.methods.propertyLocationData(0).call(function(err, res){
         //do something with res here
         console.log(res); //for example
-        var data = [
+        result = [
           {
             propertyId : res.propertyId,
-            longitude : res.longitude,
-            latitude : res.latitude
+            longitude : parseFloat(res.longitude),
+            latitude : parseFloat(res.latitude)
           }
         ]
-
-        this.setState({ markers: [
-          {
-            propertyId : res.propertyId,
-            longitude : res.longitude,
-            latitude : res.latitude
-          }
-        ] });
       });
 
-    console.log("Media Count -> " + listingsCount);
-    /*
-    const url = [
-      // Length issue
-      `https://gist.githubusercontent.com`,
-      `/farrrr/dfda7dd7fccfec5474d3`,
-      `/raw/758852bbc1979f6c4522ab4e92d1c92cba8fb0dc/data.json`
-    ].join("")
+      this.setState({ markers: result });
 
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ markers: data.photos });
-      });*/
+    console.log("Media Count -> " + result);
   }
 
   render() {

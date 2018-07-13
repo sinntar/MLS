@@ -138,8 +138,8 @@ class ListingsSummary extends Component {
           <Button onClick={this.toggle.bind(this)}>Map View</Button>
         </Button.Group>
         <div style={{ margin: "0px 0px 20px 0px" }} />
-        <div style={ hidden }><Card.Group>{this.renderCards()}</Card.Group></div>
-        <div style={ shown }><Map address={this.props.address}/></div>
+        <div style={ shown }><Card.Group>{this.renderCards()}</Card.Group></div>
+        <div style={ hidden }><Map address={this.props.address}/></div>
       </Layout>
     );
   }
