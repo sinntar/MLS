@@ -28,7 +28,7 @@ const MapWithAMarkerClusterer = compose(
 )(props =>
   <GoogleMap
     defaultZoom={3}
-    defaultCenter={{ lat: 25.0391667, lng: 121.525 }}
+    defaultCenter={{ lat: 41.850033, lng: -87.6500523 }}
   >
     <MarkerClusterer
       onClick={props.onMarkerClustererClick}
@@ -39,7 +39,7 @@ const MapWithAMarkerClusterer = compose(
       {props.markers.map((marker, index) => (
         <Marker
           key={marker.propertyId}
-          position={{ lat: marker.latitude, lng: marker.longitude }}
+          position={{ lat: marker.latitude , lng: marker.longitude }}
         />
       ))}
     </MarkerClusterer>
@@ -64,18 +64,24 @@ class Map extends React.PureComponent {
     console.log(reService);
 
     var result = [];
+    //var locationCount = 1;
+    var locationCount = await reService.methods
+      .getPropertyLocationCount()
+      .call();
 
-    const listingsCount = await reService.methods.propertyLocationData(0).call(function(err, res){
-        //do something with res here
-        console.log(res); //for example
-        result = [
-          {
+    for(var i = 0; i < locationCount; i ++)
+    {
+      await reService.methods.propertyLocationData(i).call(function(err, res){
+          //do something with res here
+          console.log(res); //for example
+          result.push({
             propertyId : res.propertyId,
             longitude : parseFloat(res.longitude),
             latitude : parseFloat(res.latitude)
-          }
-        ]
-      });
+          });
+        });
+    }
+
 
       this.setState({ markers: result });
 

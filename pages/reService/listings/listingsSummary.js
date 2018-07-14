@@ -108,6 +108,7 @@ class ListingsSummary extends Component {
 		var hidden = {
 			display: this.state.shown ? "none" : "block"
 		}
+    var maincontainer = { textAlign: 'center' };
     return (
       <Layout>
         <BreadcrumbMLSDivider />
@@ -132,11 +133,13 @@ class ListingsSummary extends Component {
           </div>
         </div>
         <div style={{ margin: "0px 0px 20px 0px" }} />
+        <div style={maincontainer} >
         <Button.Group size='large'>
           <Button onClick={this.toggle.bind(this)}>List View</Button>
           <Button.Or />
           <Button onClick={this.toggle.bind(this)}>Map View</Button>
         </Button.Group>
+        </div>
         <div style={{ margin: "0px 0px 20px 0px" }} />
         <div style={ shown }><Card.Group>{this.renderCards()}</Card.Group></div>
         <div style={ hidden }><Map address={this.props.address}/></div>

@@ -122,7 +122,11 @@ contract REService {
 
         propertyLocationData.push(newPropertyLocation);
     }
-    
+
+    function getPropertyLocationCount() public view returns(uint256) {
+        return propertyLocationData.length;
+    }
+
     function getBasicPropertyInfoCount() public view returns(uint) {
         return propertyListings.length;
     }
